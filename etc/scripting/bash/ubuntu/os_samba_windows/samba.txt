@@ -1,0 +1,16 @@
+Follow these steps to permanently add a link to tatooine:
+
+
+echo username=mywindowsusername > ~/.smbpasswd
+echo password=mywindowspassword >> ~/.smbpasswd
+chmod 600 ~/.smbpasswd
+
+add this line to /etc/fstab
+//servername/sharename /mountdirectory smbfs
+credentials=/home/myhomedirectory/.smbpasswd,uid=mylinuxusername,gid=mylinuxgroupname 0 0
+
+
+cd /media
+sudo mkdir athina
+sudo apt-get install smbfs
+sudo mount tatooine
