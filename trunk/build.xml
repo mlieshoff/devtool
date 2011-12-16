@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="helper" default="build">
+    <property name="dir" value="./target"/>
+    <property name="data" value="./etc"/>
+    <property name="file" value="${dir}/devtool-res-en.zip"/>
+    
+    <target name="build" description="builds.">
+        <echo>
+            ===========================================================================
+        </echo>
+        <echo>zip</echo>
+        <echo>
+            ===========================================================================
+        </echo>
+        <echo message="creates zip: ${file} from dir ${data}" />
+        <delete file="${file}" />
+        <zip destfile="${file}">
+            <zipfileset dir="${data}">
+                <include name="**/*" />
+            </zipfileset>
+        </zip>
+    </target>
+</project>

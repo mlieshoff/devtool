@@ -1,0 +1,1 @@
+tail -f mylog.log|grep -E 'FindBugs] 0815|XYZ|abc|send report.|switch:'
