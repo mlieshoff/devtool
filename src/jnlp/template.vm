@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://localhost:8088/test" href="$outputFile">
+ <information>
+    <title>DevTool</title>
+    <vendor>DevTool Team</vendor>
+    <homepage href="http://localhost:8088/test"/>
+    <description kind="one-line">DevTool</description>
+    <description kind="short">DevTool - the developers tool</description>
+    <description kind="tooltip">DevTool - the developers tool</description>
+    <icon href="http://localhost:8088/test/icon.jpg" kind="default"/>
+    <shortcut online="false"><desktop/><menu submenu="DevTool"/></shortcut>
+ </information>
+ <security>
+ <all-permissions/>
+ </security>
+ <resources>
+    <j2se version="1.6+" initial-heap-size="32m" max-heap-size="128m" />
+    <property name="jnlp.versionEnabled" value="true"/>
+    $dependencies
+ </resources>
+ <application-desc main-class="$mainClass">
+ </application-desc>
+</jnlp>

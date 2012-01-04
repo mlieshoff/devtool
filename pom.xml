@@ -36,4 +36,39 @@
             <version>1.0</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>webstart-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>webstart-maven-plugin</artifactId>
+                    <!-- do not bind to install phase <executions> <execution> <goals> <goal>report</goal>
+                        </goals> </execution> </executions> -->
+                    <configuration>
+                        <jnlp>
+                            <mainClass>devtool.Main</mainClass>
+                        </jnlp>
+                        <sign>
+                            <keystore>
+                                /home/mlieshoff/dev/devtool/devtool.jks
+                            </keystore>
+                            <keypass>f75zac</keypass>
+                            <storepass>f75zac</storepass>
+                            <storetype>jks</storetype>
+                            <alias>devtool</alias>
+                            <verify>true</verify>
+                        </sign>
+                        <verbose>true</verbose>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
