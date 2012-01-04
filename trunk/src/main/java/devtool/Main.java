@@ -3,6 +3,8 @@ package devtool;
 import java.awt.*;
 import java.awt.datatransfer.*;
 import java.awt.event.*;
+import java.io.*;
+import java.net.*;
 import java.util.List;
 import java.util.zip.*;
 
@@ -19,8 +21,19 @@ public class Main {
     private Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
     
     private Main() throws Exception {
-        connector = new DefaultConnector(new DefaultAdapter(new ZipFile(
-                "target/devtool-res-en.zip")));
+        BufferedInputStream in = new BufferedInputStream(new URL(
+                "http://localhost:8088/test/devtool-res-en.zip").openStream());
+        File temp = File.createTempFile("devtool-data", ".zip");
+        FileOutputStream fos = new FileOutputStream(temp);
+        BufferedOutputStream bout = new BufferedOutputStream(fos, 1024);
+        byte[] data = new byte[1024];
+        int x = 0;
+        while((x = in.read(data, 0, 1024))>=0) {
+            bout.write(data, 0, x);
+        }
+        bout.close();
+        in.close();
+        connector = new DefaultConnector(new DefaultAdapter(new ZipFile(temp)));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(640, 480);
         JPanel panel = new JPanel();
